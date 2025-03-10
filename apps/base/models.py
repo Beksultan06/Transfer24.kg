@@ -33,3 +33,19 @@ class Services(models.Model):
 
     class Meta:
         verbose_name_plural = 'Услуги'
+
+class Tariffs(models.Model):
+    title = models.CharField(
+        max_length=155,
+        verbose_name='Заголовка'
+    )
+    image = models.ImageField(
+        upload_to='tariffs',
+        verbose_name='Фото'
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = 'Тарифы'

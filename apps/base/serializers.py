@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.base.models import Base, Services
+from apps.base.models import Base, Services, Tariffs
 
 class BaseSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,3 +11,8 @@ class ServisecSerializers(serializers.ModelSerializer):
     class Meta:
         model = Services
         fields = ['id','title', 'description']
+
+class TariffsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tariffs
+        fields = ['title', 'image']

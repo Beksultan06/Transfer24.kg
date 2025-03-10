@@ -10,9 +10,9 @@ from django.urls import path, re_path
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="API Документация Ноокатская Администрация",
+        title="API Документация Transfer24.kg",
         default_version="v1",
-        description="Документация проекта Ноокатская Администрация",
+        description="Документация проекта Transfer24.kg",
         terms_of_service="https://www.google.com/policies/terms/",
         contact=openapi.Contact(email="support@example.com"),
         license=openapi.License(name="MIT License"),
