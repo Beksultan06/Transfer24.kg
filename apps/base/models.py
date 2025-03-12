@@ -12,6 +12,10 @@ class Base(models.Model):
     image = models.ImageField(
         upload_to='base', verbose_name='Фото'
     )
+    links = models.URLField(
+        verbose_name='Сыылка',
+        blank=True, null=True
+    )
 
     def __str__(self):
         return self.title
@@ -49,3 +53,31 @@ class Tariffs(models.Model):
 
     class Meta:
         verbose_name_plural = 'Тарифы'
+
+class Email(models.Model):
+    title = models.CharField(
+        max_length=155,
+        verbose_name='Заголовка'
+    )
+    description = models.CharField(
+        max_length=155,
+        verbose_name='Описание'
+    )
+    tariff = models.CharField(
+        max_length=155,
+        verbose_name='Тарифы'
+    )
+    date = models.CharField(
+        max_length=255,
+        verbose_name='Дата'
+    )
+    phone_number = models.CharField(
+        max_length=155,
+        verbose_name='Номер телефона'
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = 'Обратный связ'
