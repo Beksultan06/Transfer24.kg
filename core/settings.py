@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'ckeditor',
     'corsheaders',
-
+    'drf_yasg',
     # apps
     'apps.base',
 ]
@@ -236,3 +236,7 @@ CORS_ALLOW_HEADERS = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://aeb0-158-181-248-104.ngrok-free.app"
+]

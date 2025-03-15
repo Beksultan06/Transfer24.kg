@@ -47,6 +47,10 @@ class Tariffs(models.Model):
         upload_to='tariffs',
         verbose_name='Фото'
     )
+    type = models.CharField(
+        max_length=155,
+        verbose_name='Тип'
+    )
 
     def __str__(self):
         return self.title

@@ -1,5 +1,5 @@
 from modeltranslation.translator import TranslationOptions, register
-from apps.base.models import Base, Services
+from apps.base.models import Base, Services, Tariffs
 
 @register(Base)
 class BaseTranslationOptions(TranslationOptions):
@@ -12,5 +12,12 @@ class BaseTranslationOptions(TranslationOptions):
 class ServecesTranslationOptions(TranslationOptions):
     fields = (
         "title",
-        "description"
+        "description",
+    )
+
+@register(Tariffs)
+class TariffsTranslationOptions(TranslationOptions):
+    fields = (
+        "title",
+        "type",
     )

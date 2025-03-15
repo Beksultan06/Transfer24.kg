@@ -16,7 +16,7 @@ class ServisecSerializers(serializers.ModelSerializer):
 class TariffsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tariffs
-        fields = ['title', 'image']
+        fields = ['title', 'image', 'type']
 
 # Сериализатор
 class EmailSerializer(serializers.ModelSerializer):
