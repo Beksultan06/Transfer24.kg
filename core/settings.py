@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # rest
     'rest_framework',
     'ckeditor',
+    'corsheaders',
 
     # apps
     'apps.base',
@@ -208,3 +209,30 @@ EMAIL_HOST_USER = 'nurlanuuulubeksultan@gmail.com'
 EMAIL_HOST_PASSWORD = 'ztdwjizhqxbboncb'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 ADMIN_EMAIL = 'grazy9891@gmail.com'
+
+CORS_ALLOW_ALL_ORIGINS = True  # или CORS_ORIGIN_ALLOW_ALL = True (старый вариант)
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # для разработки с React/Vue
+    "http://127.0.0.1:5173",
+]
+
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE",
+    "OPTIONS",
+]
+
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "authorization",
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
+
+CORS_ALLOW_CREDENTIALS = True

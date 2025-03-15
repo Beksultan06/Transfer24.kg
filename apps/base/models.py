@@ -81,3 +81,22 @@ class Email(models.Model):
 
     class Meta:
         verbose_name_plural = 'Обратный связ'
+
+class Contact(models.Model):
+    name = models.CharField(
+        max_length=155,
+        verbose_name='Заголовка'
+    )
+    phone_number = models.CharField(
+        max_length=25,
+        verbose_name='Номер телефона'
+    )
+    email = models.EmailField(
+        verbose_name='Почта'
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'Контакты'

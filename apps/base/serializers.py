@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.base.models import Base, Email, Services, Tariffs
+from apps.base.models import Base, Email, Services, Tariffs, Contact
 import re
 
 class BaseSerializer(serializers.ModelSerializer):
@@ -29,3 +29,8 @@ class EmailSerializer(serializers.ModelSerializer):
         if not re.match(r'^\+?\d{10,15}$', value):
             raise serializers.ValidationError("Некорректный номер телефона.")
         return value
+
+class ContactSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Contact
+        fields = "__all__"  

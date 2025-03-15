@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from apps.base.models import Base, Services, Tariffs, Email
-from apps.base.serializers import BaseSerializer, ServisecSerializers, TariffsSerializer, EmailSerializer
+from apps.base.models import Base, Services, Tariffs, Email, Contact
+from apps.base.serializers import BaseSerializer, ServisecSerializers, TariffsSerializer, EmailSerializer, ContactSerializers
 
 from rest_framework import mixins, viewsets
 from rest_framework.viewsets import GenericViewSet
@@ -58,6 +58,43 @@ class EmailViewSet(viewsets.ModelViewSet):
             subject,
             message,
             settings.DEFAULT_FROM_EMAIL,  # От кого
+            [settings.ADMIN_EMAIL],  # Кому отправлять
+            fail_silently=False
+        )
+
+class FeedbackViewSet(viewsets.ModelViewSet):
+    """ViewSet для обработки формы обратной связи"""
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializers
+
+    def create(self, request, *args, **kwargs):
+        """Создание обратной связи и отправка email"""
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            contact_instance = serializer.save()
+
+            # Отправка email
+            self.send_contact_email(contact_instance)
+
+            return Response(
+                {"message": "Ваше сообщение отправлено!", "data": serializer.data},
+                status=status.HTTP_201_CREATED
+            )
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def send_contact_email(self, contact_instance):
+        """Отправляет email-уведомление с контактными данными"""
+        subject = f"Обратная связь от {contact_instance.name}"
+        message = (
+            f"Имя: {contact_instance.name}\n"
+            f"Телефон: {contact_instance.phone_number}\n"
+            f"Email: {contact_instance.email}"
+        )
+
+        send_mail(
+            subject,
+            message,
+            settings.DEFAULT_FROM_EMAIL,  # Отправитель
             [settings.ADMIN_EMAIL],  # Кому отправлять
             fail_silently=False
         )
