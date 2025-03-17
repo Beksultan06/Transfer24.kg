@@ -125,7 +125,8 @@ class End(models.Model):
 
 class ServicesTrans(models.Model):
     title = models.CharField(
-        max_length=155,verbose_name='Заголовок'
+        max_length=155,
+        verbose_name='Заголовок'
     )
     description = RichTextField(
         verbose_name='Описание'

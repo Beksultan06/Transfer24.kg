@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from apps.base.models import Base, Services, Tariffs, Email, Contact, ServicesTrans, End
-from apps.base.serializers import BaseSerializer, ServisecSerializers, TariffsSerializer, EmailSerializer, ContactSerializers, EndSerializers, ServicesTrans
+from apps.base.serializers import BaseSerializer, ServisecSerializers, TariffsSerializer, EmailSerializer, ContactSerializers, EndSerializers, ServicesTransSerializers
 
 from rest_framework import mixins, viewsets
 from rest_framework.viewsets import GenericViewSet
@@ -23,7 +23,7 @@ class EndAPI(GenericViewSet,
 class ServicesTransAPI(GenericViewSet,
               mixins.ListModelMixin):
     queryset = ServicesTrans.objects.all()
-    serializer_class = ServicesTrans
+    serializer_class = ServicesTransSerializers
 
 class ServicesAPI(GenericViewSet,
                   mixins.ListModelMixin):
