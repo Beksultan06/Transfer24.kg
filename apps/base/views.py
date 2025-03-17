@@ -45,7 +45,7 @@ class EmailViewSet(viewsets.ModelViewSet):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def send_feedback_email(self, email_instance):
-        """Функция отправки email уведомления"""
+        """Функция отправки email уведомления только администратору"""
         subject = f"Новая заявка: {email_instance.title}"
         message = (
             f"Описание: {email_instance.description}\n"
@@ -54,11 +54,13 @@ class EmailViewSet(viewsets.ModelViewSet):
             f"Номер телефона: {email_instance.phone_number}"
         )
 
+        recipients = [settings.ADMIN_EMAIL]  # Отправляем только админу
+
         send_mail(
             subject,
             message,
             settings.DEFAULT_FROM_EMAIL,  # От кого
-            [settings.ADMIN_EMAIL],  # Кому отправлять
+            recipients,  # Кому отправлять
             fail_silently=False
         )
 
@@ -83,7 +85,7 @@ class FeedbackViewSet(viewsets.ModelViewSet):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def send_contact_email(self, contact_instance):
-        """Отправляет email-уведомление с контактными данными"""
+        """Отправляет email-уведомление администратору и отправителю"""
         subject = f"Обратная связь от {contact_instance.name}"
         message = (
             f"Имя: {contact_instance.name}\n"
@@ -91,10 +93,14 @@ class FeedbackViewSet(viewsets.ModelViewSet):
             f"Email: {contact_instance.email}"
         )
 
+        recipients = [settings.ADMIN_EMAIL]  # Администратор
+        if contact_instance.email:  # Если у пользователя есть email
+            recipients.append(contact_instance.email)
+
         send_mail(
             subject,
             message,
             settings.DEFAULT_FROM_EMAIL,  # Отправитель
-            [settings.ADMIN_EMAIL],  # Кому отправлять
+            recipients,  # Кому отправлять
             fail_silently=False
         )

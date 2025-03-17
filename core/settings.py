@@ -67,7 +67,7 @@ MIDDLEWARE = [
 
 LANGUAGES = [
     ('ru', _('Russian')),
-    ('ky', _('Kyrgyz')),
+    ('en', _('English')),
 ]
 
 LANGUAGE_CODE = 'ru'
