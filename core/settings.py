@@ -56,6 +56,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "corsheaders.middleware.CorsMiddleware", 
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -210,22 +211,21 @@ EMAIL_HOST_PASSWORD = 'ztdwjizhqxbboncb'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 ADMIN_EMAIL = 'grazy9891@gmail.com'
 
-CORS_ALLOW_ALL_ORIGINS = True  # или CORS_ORIGIN_ALLOW_ALL = True (старый вариант)
+# Разрешить все запросы (использовать только в разработке!)
+CORS_ALLOW_ALL_ORIGINS = True  
 
+# Разрешенные источники (если CORS_ALLOW_ALL_ORIGINS = False)
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # для разработки с React/Vue
+    "http://localhost:5173",  # React/Vue локально
     "http://127.0.0.1:5173",
+    "https://fc3d-158-181-248-104.ngrok-free.app",  # Ngrok-сервер
+    'https://192.168.31.5',
 ]
 
-CORS_ALLOW_METHODS = [
-    "GET",
-    "POST",
-    "PUT",
-    "PATCH",
-    "DELETE",
-    "OPTIONS",
-]
+# Разрешенные методы HTTP
+CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
 
+# Разрешенные заголовки
 CORS_ALLOW_HEADERS = [
     "accept",
     "authorization",
@@ -235,8 +235,11 @@ CORS_ALLOW_HEADERS = [
     "x-requested-with",
 ]
 
+# Разрешить куки и авторизацию
 CORS_ALLOW_CREDENTIALS = True
 
+# Доверенные источники для CSRF
 CSRF_TRUSTED_ORIGINS = [
-    "https://aeb0-158-181-248-104.ngrok-free.app"
+    "https://fc3d-158-181-248-104.ngrok-free.app",
+    'http://192.168.31.5:8000/',
 ]

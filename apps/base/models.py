@@ -104,3 +104,38 @@ class Contact(models.Model):
 
     class Meta:
         verbose_name_plural = 'Контакты'
+
+class End(models.Model):
+    title = models.CharField(
+        max_length=155,verbose_name='Заголовок'
+    )
+    description = RichTextField(
+        verbose_name='Описание'
+    )
+    links = models.URLField(
+        verbose_name='Сыылка',
+        blank=True, null=True
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = 'Конец'
+
+class ServicesTrans(models.Model):
+    title = models.CharField(
+        max_length=155,verbose_name='Заголовок'
+    )
+    description = RichTextField(
+        verbose_name='Описание'
+    )
+    image = models.ImageField(
+        upload_to='base', verbose_name='Фото'
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = 'Услуги Транса'

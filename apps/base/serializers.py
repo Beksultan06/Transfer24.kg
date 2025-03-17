@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.base.models import Base, Email, Services, Tariffs, Contact
+from apps.base.models import Base, Email, Services, Tariffs, Contact, ServicesTrans, End
 import re
 
 class BaseSerializer(serializers.ModelSerializer):
@@ -33,4 +33,14 @@ class EmailSerializer(serializers.ModelSerializer):
 class ContactSerializers(serializers.ModelSerializer):
     class Meta:
         model = Contact
-        fields = "__all__"  
+        fields = "__all__"
+
+class ServicesTransSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = ServicesTrans
+        fields = "__all__"
+
+class EndSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = End
+        fields = "__all__"
