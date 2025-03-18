@@ -140,3 +140,133 @@ class ServicesTrans(models.Model):
 
     class Meta:
         verbose_name_plural = 'Услуги Трансапорта'
+
+class Settings(models.Model):
+    about = models.CharField(
+        max_length=155,
+        verbose_name=r'Заголовка о нас'
+    )
+    services = models.CharField(
+        max_length=155,
+        verbose_name=r'Заголовка о услуги'
+    )
+    tarif = models.CharField(
+        max_length=155,
+        verbose_name=r'Заголовка о тариф'
+    )
+    review = models.CharField(
+        max_length=155,
+        verbose_name=r'Заголовка о отзывы'
+    )
+    contact = models.CharField(
+        max_length=155,
+        verbose_name='Заголовка контактов'
+    )
+    title = models.CharField(
+        max_length=155,
+        verbose_name='Заголовка'
+    )
+    description = models.CharField(
+        max_length=155,
+        verbose_name='Описание'
+    )
+    name = models.CharField(
+        max_length=155,
+        verbose_name='Имя'
+    )
+    number = models.CharField(
+        max_length=155,
+        verbose_name='Номер телефона'
+    )
+    email = models.CharField(
+        max_length=155,
+        verbose_name='почта'
+    )
+    send = models.CharField(
+        max_length=155,
+        verbose_name='Отправить'
+    )
+    info = models.CharField(
+        max_length=155,
+        verbose_name='Заголовка Информаций'
+    )
+    location = models.CharField(
+        max_length=155,
+        verbose_name='Заголовка локаций'
+    )
+    watapp = models.URLField(
+        verbose_name='Ссылка на ватсап'
+    )
+    telegram = models.URLField(
+        verbose_name='Ссылка на телеграм'
+    )
+    insta = models.URLField(
+        verbose_name='Ссылка на Истаграм'
+    )
+    phone_number_2 = models.CharField(
+        max_length=155,
+        verbose_name='Ссылка на номер телефона'
+    )
+    
+    pick = models.CharField(
+        max_length=155,
+        verbose_name='Подобрать '
+    )
+    enter = models.CharField(
+        max_length=155,
+        verbose_name='Введите пункт назначения'
+    )
+    tariff = models.CharField(
+        max_length=155,
+        verbose_name='Тариф'
+    )
+    pick_up_date = models.CharField(
+        max_length=155,
+        verbose_name='Дата получения'
+    )
+    phone = models.CharField(
+        max_length=155,
+        verbose_name='Телефон'
+    )
+    order = models.CharField(
+        max_length=155,
+        verbose_name='Заказ'
+    )
+    our_services = models.CharField(
+        max_length=155,
+        verbose_name='Наши услуги'
+    )
+    sviper = models.CharField(
+        max_length=155,
+        verbose_name='Что говорят наши клиенты'
+    ) 
+    drivers = models.CharField(
+        max_length=155,
+        verbose_name='Водители'
+    )
+    business = models.CharField(
+        max_length=155,
+        verbose_name='Бизнес встречи'
+    )
+    event = models.CharField(
+        max_length=155,
+        verbose_name='События'
+    )
+    video = models.CharField(
+        max_length=155,
+        verbose_name='Видеообзоры'
+    )
+    support = models.CharField(
+        max_length=155,
+        verbose_name='Поддержать'
+    )
+    text = models.CharField(
+        max_length=155,
+        verbose_name='Текстовые обзоры'
+    )
+    
+    def __str__(self):
+        return self.title 
+    
+    class Meta:
+        verbose_name_plural = 'Главные Настройки'
