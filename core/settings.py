@@ -166,7 +166,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'nurlanuuulubeksultan@gmail.com'
 EMAIL_HOST_PASSWORD = 'ztdwjizhqxbboncb'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-ADMIN_EMAIL = 'grazy9891@gmail.com'
+ADMIN_EMAIL = 'Bek910@mail.ru'
 
 # CORS Настройки
 CORS_ALLOWED_ORIGINS = [
