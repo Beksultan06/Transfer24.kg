@@ -11,7 +11,7 @@ SECRET_KEY = "django-insecure-7t7b8wb9^fu(*&00!2+%(wc(*!=4=rv&ia)fxv2imn65ht80y3
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*", 'https://transfer24.kg']
 
 INSTALLED_APPS = [
     'modeltranslation',
@@ -174,6 +174,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
     "https://fc3d-158-181-248-104.ngrok-free.app",
     "http://192.168.31.5",
+    'https://transfer24.kg'
 ]
 
 CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
@@ -193,4 +194,5 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",  # Добавляем локальный бэкенд
     "https://fc3d-158-181-248-104.ngrok-free.app",
     "http://192.168.31.5",
+    'https://transfer24.kg'
 ]
