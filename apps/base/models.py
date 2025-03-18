@@ -139,4 +139,4 @@ class ServicesTrans(models.Model):
         return self.title
 
     class Meta:
-        verbose_name_plural = 'Услуги Транса'
+        verbose_name_plural = 'Услуги Трансапорта'
