@@ -59,7 +59,7 @@ ROOT_URLCONF = "core.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "static")],  # Указываем путь к фронту
+        "DIRS": [os.path.join(BASE_DIR, "dist")],  # Указываем путь к фронту
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -101,9 +101,11 @@ USE_TZ = True
 # ]
 
 STATIC_URL = "/assets/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "dist", "assets"),
 ]
+
 
 
 # STATICFILES_DIRS удаляем, так как "dist" уже в TEMPLATES['DIRS']

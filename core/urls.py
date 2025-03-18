@@ -9,7 +9,6 @@ from drf_yasg import openapi
 from django.urls import path, re_path
 from django.views.generic import TemplateView
 
-# API-документация
 schema_view = get_schema_view(
     openapi.Info(
         title="API Документация Transfer24.kg",
@@ -33,12 +32,9 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
 
-# Добавляем маршруты API с мультиязычностью
 urlpatterns += i18n_patterns(
     path("api/v1/base/", include("apps.base.urls")),
 )
 
-# Раздаём статику (только в режиме разработки)
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
