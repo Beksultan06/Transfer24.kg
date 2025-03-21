@@ -267,9 +267,13 @@ class Settings(models.Model):
     banner_link = models.URLField(
         verbose_name='Ссылка'
     )
-    
+    banner_link_text = models.CharField(
+        max_length=155,
+        verbose_name='Заголовка'
+    )
+
     def __str__(self):
         return self.title
-    
+
     class Meta:
         verbose_name_plural = 'Главные Настройки'
